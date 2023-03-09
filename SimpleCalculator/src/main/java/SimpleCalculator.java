@@ -5,10 +5,9 @@ public class SimpleCalculator {
 
         Calculator calculator = new Calculator();
 
-        int result = calculator.calculate(5, 10, "add");
+        int result = calculator.calculate(10, 10, "divide");
 
         System.out.println(result);
-
 
     }
 }

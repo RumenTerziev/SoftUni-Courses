@@ -5,5 +5,4 @@ public enum Operations {
     multiply,
     divide;
 
-
 }

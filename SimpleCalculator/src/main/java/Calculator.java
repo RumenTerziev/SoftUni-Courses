@@ -26,15 +26,8 @@ public class Calculator {
         operations.put("add", add);
         operations.put("subtract", subtract);
 
-        operations.entrySet()
-                .stream()
-                .filter(entry -> entry.getKey().equals(operation))
-                .forEach(entry -> result = entry.getValue().apply(firstNum, secondNum));
-
+        result = operations.get(operation).apply(firstNum, secondNum);
         return result;
     }
-
-
-
 
 }
