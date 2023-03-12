@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 
 
-public class SimpleCalculatorTest {
+public class CalculatorApplicationTest {
 
     private Calculator calculator;
 
@@ -19,7 +19,7 @@ public class SimpleCalculatorTest {
     public void testCalculateShouldAddCorrectly() throws IOException {
 
         int expected = 10;
-        int actual = calculator.calculate(5, 5, "add");
+        int actual = calculator.calculate(5, 5, Operations.add);
 
         assertEquals(expected, actual);
 
@@ -28,7 +28,7 @@ public class SimpleCalculatorTest {
     @Test
     public void testCalculateShouldSubtractCorrectly() throws IOException {
         int expected = 5;
-        int actual = calculator.calculate(10, 5, "subtract");
+        int actual = calculator.calculate(10, 5, Operations.subtract);
 
         assertEquals(expected, actual);
 
@@ -38,7 +38,7 @@ public class SimpleCalculatorTest {
     @Test
     public void testCalculateShouldMultiplyCorrectly() throws IOException {
         int expected = 50;
-        int actual = calculator.calculate(10, 5, "multiply");
+        int actual = calculator.calculate(10, 5, Operations.multiply);
 
         assertEquals(expected, actual);
 
@@ -48,7 +48,7 @@ public class SimpleCalculatorTest {
     @Test
     public void testCalculateShouldDivideCorrectly() throws IOException {
         int expected = 2;
-        int actual = calculator.calculate(10, 5, "divide");
+        int actual = calculator.calculate(10, 5, Operations.divide);
 
         assertEquals(expected, actual);
 

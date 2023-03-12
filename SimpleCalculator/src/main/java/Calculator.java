@@ -1,33 +1,32 @@
 import java.io.*;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
 
-public class Calculator {
-    private Integer result;
 
-    public Calculator() {
+public class Calculator {
+    private static final Map<Operations, BiFunction<Integer, Integer, Integer>> OPERATIONS = getOperationsMap();
+
+
+
+    public static int calculate(int firstNum, int secondNum, Operations operation) throws IOException {
+
+        return OPERATIONS.get(operation).apply(firstNum, secondNum);
     }
 
-
-    public int calculate(int firstNum, int secondNum, String operation) throws IOException {
-
-
+    private static Map<Operations, BiFunction<Integer, Integer, Integer>> getOperationsMap() {
+        Map<Operations, BiFunction<Integer, Integer, Integer>> result = new HashMap<>();
         BiFunction<Integer, Integer, Integer> multiply = (f, s) -> f * s;
         BiFunction<Integer, Integer, Integer> divide = (f, s) -> f / s;
         BiFunction<Integer, Integer, Integer> add = Integer::sum;
         BiFunction<Integer, Integer, Integer> subtract = (f, s) -> f - s;
+        result.put(Operations.multiply, multiply);
+        result.put(Operations.divide, divide);
+        result.put(Operations.add, add);
+        result.put(Operations.subtract, subtract);
 
-
-        Map<String, BiFunction<Integer, Integer, Integer>> operations = new HashMap<>();
-
-        operations.put("multiply", multiply);
-        operations.put("divide", divide);
-        operations.put("add", add);
-        operations.put("subtract", subtract);
-
-        result = operations.get(operation).apply(firstNum, secondNum);
-        return result;
+        return Collections.unmodifiableMap(result);
     }
 
 }
