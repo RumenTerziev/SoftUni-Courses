@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,23 +9,26 @@ public class Calculator {
 
 
 
-    public static int calculate(int firstNum, int secondNum, Operations operation) throws IOException {
+    public static int calculate(int firstNum, int secondNum, Operations operation) {
 
-        return OPERATIONS.get(operation).apply(firstNum, secondNum);
+            return OPERATIONS.get(operation).apply(firstNum, secondNum);
+
     }
 
     private static Map<Operations, BiFunction<Integer, Integer, Integer>> getOperationsMap() {
-        Map<Operations, BiFunction<Integer, Integer, Integer>> result = new HashMap<>();
+
+        Map<Operations, BiFunction<Integer, Integer, Integer>> resultMap = new HashMap<>();
         BiFunction<Integer, Integer, Integer> multiply = (f, s) -> f * s;
         BiFunction<Integer, Integer, Integer> divide = (f, s) -> f / s;
         BiFunction<Integer, Integer, Integer> add = Integer::sum;
         BiFunction<Integer, Integer, Integer> subtract = (f, s) -> f - s;
-        result.put(Operations.multiply, multiply);
-        result.put(Operations.divide, divide);
-        result.put(Operations.add, add);
-        result.put(Operations.subtract, subtract);
+        resultMap.put(Operations.multiply, multiply);
+        resultMap.put(Operations.divide, divide);
+        resultMap.put(Operations.add, add);
+        resultMap.put(Operations.subtract, subtract);
 
-        return Collections.unmodifiableMap(result);
+        return Collections.unmodifiableMap(resultMap);
     }
+
 
 }

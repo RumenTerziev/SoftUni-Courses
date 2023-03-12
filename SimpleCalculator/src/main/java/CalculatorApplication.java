@@ -1,11 +1,8 @@
-import java.io.*;
-
 public class CalculatorApplication {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
+            int result = Calculator.calculate(10, 10, Operations.divide);
+            System.out.println(result);
 
-        int result = Calculator.calculate(10, 10, Operations.divide);
-
-        System.out.println(result);
     }
 }
