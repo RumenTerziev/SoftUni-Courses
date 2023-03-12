@@ -37,7 +37,7 @@ public class SnowWhite {
         for (List<String> mapKey : dwarves.keySet()) {
             String hatColor = mapKey.get(0);
             repetitionsMap.putIfAbsent(hatColor, 0);
-            repetitionsMap.put(hatColor, repetitionsMap.get(hatColor) + 1);
+            repetitionsMap.put(hatColor, repetitionsMap.get(hatColor) +1);
         }
 
 
