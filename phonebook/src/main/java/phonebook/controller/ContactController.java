@@ -29,14 +29,8 @@ public class ContactController {
 
     @PostMapping("/")
     public String addContact(Contact contact) {
-       Contact contactToAdd = contacts.stream().filter(contact1 -> contact1.getName().equals(contact.getName())).findFirst().orElse(null);
-        if (contactToAdd == null) {
             this.contacts.add(contact);
             return "redirect:/";
-        } else {
-            throw new IllegalArgumentException("Contact already added");
-        }
-
     }
 
 
