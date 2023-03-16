@@ -17,7 +17,6 @@ public class CalculatorController {
     @RequestMapping("/api/calculator")
     public Integer test(@Validated CalculatorParamsDto params) {
         return Calculator.calculate(params.getFirstNum(), params.getSecondNum(), params.getOperation());
-//        return params.getFirstNum() * params.getSecondNum();
     }
 
 }
