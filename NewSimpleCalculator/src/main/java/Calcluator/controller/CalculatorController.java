@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CalculatorController {
-
-    public CalculatorController() {
-    }
+    
 
     @GetMapping
     @RequestMapping("/api/calculator")
