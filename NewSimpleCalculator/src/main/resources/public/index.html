@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Calculator</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
@@ -41,6 +42,22 @@
     }
 
     document.getElementById('calc').onclick = calc;
+
+
+    function handleException(request, message, error) {
+        let msg = "";
+
+        msg += "Code: " + request.status + "\n";
+        msg += "Text: " + request.statusText + "\n";
+        if (request.responseJSON != null) {
+            msg += "Message: " +
+                request.responseJSON.message(msg) + "\n";
+        }
+
+        alert(msg);
+    }
+
+
 </script>
 
 

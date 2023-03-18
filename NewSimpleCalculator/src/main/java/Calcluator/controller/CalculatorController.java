@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CalculatorController {
     
-
     @GetMapping
     @RequestMapping("/api/calculator")
     public Integer test(@Validated CalculatorParamsDto params) {
