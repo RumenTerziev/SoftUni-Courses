@@ -1,6 +1,6 @@
 body {
-    background: rgb(176, 192, 239);
-    background: linear-gradient(90deg, rgba(176, 192, 239, 1) 0%, rgba(145, 191, 197, 1) 49%, rgba(181, 246, 246, 1) 100%);
+    background: rgb(36,74,186);
+    background: linear-gradient(90deg, rgba(36,74,186,1) 0%, rgba(22,104,115,1) 49%, rgba(42,143,143,1) 100%);
     font-family: "Sentinel A", "Sentinel B", Georgia, "Times New Roman", Times, serif;
 }
 
@@ -15,12 +15,13 @@ body {
     padding: 12px;
     width: 35%;
     overflow: hidden;
+    background-color: lightseagreen;
 }
 
 #calc {
     width: 120px;
     padding: 8px;
-    background-color: coral;
+    background-color: blueviolet;
     border: 1px solid grey;
     border-radius: 8px;
     font-size: 16px;
