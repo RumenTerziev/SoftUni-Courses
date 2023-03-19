@@ -13,7 +13,7 @@ public class Calculator {
 
     public static int calculate(int firstNum, int secondNum, String operation) {
 
-        if (getOperationsMap().containsKey(operation)) {
+        if (OPERATIONS.containsKey(operation)) {
             return OPERATIONS.get(operation).apply(firstNum, secondNum);
         } else {
             throw new IllegalArgumentException("Invalid operation!");
