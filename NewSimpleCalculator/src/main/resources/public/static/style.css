@@ -26,6 +26,7 @@ body {
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
+    display: block;
 }
 
 .container label {
@@ -41,22 +42,8 @@ body {
 
 @media (max-width: 560px) {
     .container {
-        width: 55%;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-
-    #calc {
-        display: block;
+        width: 60%;
     }
 
 }
 
-
-@media (max-width: 420px) {
-    h1 {
-        font-size: 20px;
-    }
-}
