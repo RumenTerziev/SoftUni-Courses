@@ -1,25 +1,20 @@
 package Calcluator.controller;
 
+
 import Calcluator.calculator.Calculator;
 import Calcluator.calculator.CalculatorParamsDto;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+
+import javax.validation.Valid;
 
 
 @RestController
 public class CalculatorController {
-    
     @GetMapping
     @RequestMapping("/api/calculator")
-    public String test(CalculatorParamsDto params) {
-        try {
+    public String test(@Valid CalculatorParamsDto params) {
 
-            int result = Calculator.calculate(params.getFirstNum(), params.getSecondNum(), params.getOperation());
-            return result + "";
-        } catch (IllegalArgumentException exception) {
-            return exception.getMessage();
-        }
+        return Calculator.calculate(params.getFirstNum(), params.getSecondNum(), params.getOperation()) + "";
     }
-
 }

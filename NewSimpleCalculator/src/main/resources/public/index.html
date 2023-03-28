@@ -34,11 +34,25 @@
         let url = "api/calculator?firstNum=" + in1 + "&secondNum=" + in2 + "&operation=" + in3;
         let resSpan = document.getElementById('result');
 
-        fetch(url)
+
+      fetch(url)
+            .then((resp) => checkError(resp))
             .then(resp => resp.text())
             .then((data) =>
                 resSpan.innerText = data
-            );
+            )
+          .catch(() =>
+              resSpan.textContent = 'Invalid input!'
+          );
+
+
+        function checkError(response) {
+          if (response.status >= 200 && response.status < 300) {
+              return response;
+          } else {
+              throw Error(response.status);
+          }
+        }
     }
 
     document.getElementById('calc').onclick = calc;

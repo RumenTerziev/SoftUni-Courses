@@ -10,14 +10,9 @@ public class Calculator {
     private static final Map<String, BiFunction<Integer, Integer, Integer>> OPERATIONS = getOperationsMap();
 
 
-
     public static int calculate(int firstNum, int secondNum, String operation) {
 
-        if (OPERATIONS.containsKey(operation)) {
             return OPERATIONS.get(operation).apply(firstNum, secondNum);
-        } else {
-            throw new IllegalArgumentException("Invalid operation!");
-        }
 
     }
 

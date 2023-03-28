@@ -14,7 +14,7 @@ body {
     border-radius: 6px;
     padding: 12px;
     width: 35%;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background-color: lightseagreen;
 }
 
