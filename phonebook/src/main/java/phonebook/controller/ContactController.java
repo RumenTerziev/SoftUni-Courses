@@ -1,6 +1,7 @@
 package phonebook.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -29,8 +30,11 @@ public class ContactController {
 
     @PostMapping("/")
     public String addContact(Contact contact) {
+        Contact contactToAdd = this.contacts.stream().filter(c -> c.getName().equals(contact.getName())).findFirst().orElse(null);
+        if (contactToAdd == null) {
             this.contacts.add(contact);
-            return "redirect:/";
+        }
+        return "redirect:/";
     }
 
 
@@ -47,6 +51,12 @@ public class ContactController {
             }
         }
 
+        return "redirect:/";
+    }
+
+    @DeleteMapping("/")
+    public String deleteByName(Contact deleted) {
+        this.contacts.removeIf(contact -> contact.getName().equals(deleted.getName()));
         return "redirect:/";
     }
 
