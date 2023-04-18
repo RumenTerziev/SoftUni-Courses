@@ -27,9 +27,12 @@
 
 <script>
     function calc() {
-        let in1 = document.getElementById('in1').value;
-        let in2 = document.getElementById('in2').value;
-        let in3 = document.getElementById('in3').value;
+        let inputOne = document.getElementById('in1');
+        let inputTwo = document.getElementById('in2');
+        let inputThree = document.getElementById('in3');
+        let in1 = inputOne.value;
+        let in2 = inputTwo.value;
+        let in3 = inputThree.value;
 
         let url = "api/calculator?firstNum=" + in1 + "&secondNum=" + in2 + "&operation=" + in3;
         let resSpan = document.getElementById('result');
@@ -38,13 +41,18 @@
       fetch(url)
             .then((resp) => checkError(resp))
             .then(resp => resp.text())
-            .then((data) =>
-                resSpan.innerText = data
+            .then((data) => {
+                resSpan.innerText = data;
+                }
             )
-          .catch(() =>
-              resSpan.textContent = 'Invalid input!'
+          .catch(() => {
+              resSpan.textContent = 'Invalid input!';
+              }
           );
 
+        inputOne.value = '';
+        inputTwo.value = '';
+        inputThree.value = '';
 
         function checkError(response) {
           if (response.status >= 200 && response.status < 300) {
