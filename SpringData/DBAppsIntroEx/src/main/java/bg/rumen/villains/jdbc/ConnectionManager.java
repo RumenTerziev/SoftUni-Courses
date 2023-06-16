@@ -7,7 +7,6 @@ import java.util.Properties;
 
 public class ConnectionManager {
 
-
     public static Connection getConnection() {
 
         Connection connection;
