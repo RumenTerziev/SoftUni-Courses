@@ -1,0 +1,6 @@
+bg\rumen\tasks\FirstTask.class
+bg\rumen\tasks\SecondTask.class
+bg\rumen\tasks\TestTask.class
+bg\rumen\models\Employee.class
+bg\rumen\basicjdbc\JDBCProps.class
+bg\rumen\basicjdbc\ConnectionManager.class
