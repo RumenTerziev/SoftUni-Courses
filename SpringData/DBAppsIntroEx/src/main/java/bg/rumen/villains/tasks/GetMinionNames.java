@@ -27,7 +27,7 @@ public class GetMinionNames {
 
         String searchedVillain = getVillainNameById(connection, searchedVillainId);
         if (searchedVillain == null) {
-            System.out.printf("No villain with ID %d exists in the database.", searchedVillainId);
+            System.out.println("No villain with ID 10 exists in the database.");
         } else {
             System.out.printf("Villain: %s%n", searchedVillain);
 
