@@ -54,8 +54,7 @@ public class EntityManager<T> implements DBContext<T> {
         ResultSet resultSet = preparedStatement.executeQuery(query);
 
         while (resultSet.next()) {
-            T entity = table.getDeclaredConstructor().newInstance();
-            fillEntity(table, resultSet, entity);
+            T entity = getEntity(table, resultSet);
             resultList.add(entity);
         }
 
@@ -78,8 +77,7 @@ public class EntityManager<T> implements DBContext<T> {
         ResultSet resultSet = preparedStatement.executeQuery(query);
 
         while (resultSet.next()) {
-            T entity = table.getDeclaredConstructor().newInstance();
-            fillEntity(table, resultSet, entity);
+            T entity = getEntity(table, resultSet);
             resultList.add(entity);
         }
 
@@ -98,11 +96,9 @@ public class EntityManager<T> implements DBContext<T> {
         PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 
         ResultSet resultSet = preparedStatement.executeQuery(query);
-        T entity = table.getDeclaredConstructor().newInstance();
         resultSet.next();
-        fillEntity(table, resultSet, entity);
 
-        return entity;
+        return getEntity(table, resultSet);
     }
 
     @Override
@@ -123,6 +119,17 @@ public class EntityManager<T> implements DBContext<T> {
         resultSet.next();
         fillEntity(table, resultSet, entity);
 
+        return entity;
+    }
+
+
+    private T getEntity(Class<T> table, ResultSet resultSet) throws InstantiationException,
+            IllegalAccessException,
+            InvocationTargetException,
+            NoSuchMethodException,
+            SQLException {
+        T entity = table.getDeclaredConstructor().newInstance();
+        fillEntity(table, resultSet, entity);
         return entity;
     }
 
