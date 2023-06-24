@@ -48,13 +48,13 @@ public class EntityManager<T> implements DBContext<T> {
         List<T> resultList = new ArrayList<>();
 
         String tableName = getTableName(table);
-        String query = String.format("SELECT * FROM %s LIMIT 1;", tableName);
+        String query = String.format("SELECT * FROM %s;", tableName);
         PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 
         ResultSet resultSet = preparedStatement.executeQuery(query);
-        T entity = table.getDeclaredConstructor().newInstance();
 
         while (resultSet.next()) {
+            T entity = table.getDeclaredConstructor().newInstance();
             fillEntity(table, resultSet, entity);
             resultList.add(entity);
         }
@@ -72,13 +72,13 @@ public class EntityManager<T> implements DBContext<T> {
         List<T> resultList = new ArrayList<>();
 
         String tableName = getTableName(table);
-        String query = String.format("SELECT * FROM %s %s LIMIT 1;", tableName, where != null ? " WHERE " + where : "");
+        String query = String.format("SELECT * FROM %s %s;", tableName, where != null ? " WHERE " + where : "");
         PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 
         ResultSet resultSet = preparedStatement.executeQuery(query);
-        T entity = table.getDeclaredConstructor().newInstance();
 
         while (resultSet.next()) {
+            T entity = table.getDeclaredConstructor().newInstance();
             fillEntity(table, resultSet, entity);
             resultList.add(entity);
         }

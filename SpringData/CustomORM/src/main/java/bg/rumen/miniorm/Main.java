@@ -6,8 +6,11 @@ import bg.rumen.miniorm.manager.EntityManager;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -43,6 +46,20 @@ public class Main {
         System.out.println(found.getId());
         System.out.println(found.getName());
         System.out.println(found.getRegistration());
+
+        Iterable<User> users = userManager.find(User.class, "id > 35");
+
+
+        for (User currentUser : users) {
+            System.out.println("<===============Current User================>");
+
+            System.out.println(currentUser.getId());
+            System.out.println(currentUser.getName());
+            System.out.println(currentUser.getRegistration());
+        }
+
+
+
 
     }
 }
