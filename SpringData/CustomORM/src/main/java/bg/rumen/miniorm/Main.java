@@ -58,8 +58,6 @@ public class Main {
             System.out.println(currentUser.getRegistration());
         }
 
-
-
-
+        connection.close();
     }
 }
