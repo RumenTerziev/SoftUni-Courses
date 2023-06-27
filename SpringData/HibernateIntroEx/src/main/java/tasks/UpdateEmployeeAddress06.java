@@ -6,7 +6,6 @@ import utils.EntityManagerCreator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class UpdateEmployeeAddress06 {

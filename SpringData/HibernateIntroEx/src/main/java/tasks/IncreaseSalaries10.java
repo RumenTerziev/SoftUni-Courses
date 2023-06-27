@@ -24,13 +24,16 @@ public class IncreaseSalaries10 {
 
         resultList.forEach(e -> e.setSalary(e.getSalary().add(e.getSalary().multiply(increasingIndex))));
 
-        StringBuilder sb = new StringBuilder();
-        DecimalFormat df = new DecimalFormat("#.0000");
-
-        resultList.forEach(e -> sb.append(String.format("%s %s ($%s)%n", e.getFirstName(), e.getLastName(), df.format(e.getSalary()))));
 
         entityManager.getTransaction().commit();
 
+        StringBuilder sb = new StringBuilder();
+        DecimalFormat df = new DecimalFormat("#.0000");
+
+        resultList.forEach(e -> sb.append(String.format("%s %s ($%s)%n",
+                e.getFirstName(),
+                e.getLastName(),
+                df.format(e.getSalary()))));
         return sb.toString().trim();
     }
 }

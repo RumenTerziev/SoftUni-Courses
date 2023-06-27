@@ -21,7 +21,7 @@ public class ContainsEmployee03 {
         String result;
         try {
 
-            Employee employee = entityManager.createQuery(
+           entityManager.createQuery(
                             "SELECT e FROM Employee e WHERE " +
                                     "CONCAT(e.firstName, ' ', e.lastName) LIKE :fullName", Employee.class)
                     .setParameter("fullName", fullName)

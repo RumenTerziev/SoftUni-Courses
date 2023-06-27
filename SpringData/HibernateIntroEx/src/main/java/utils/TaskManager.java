@@ -49,9 +49,9 @@ public class TaskManager {
         resultMap.put(8, EmployeesWithProject08.class);
         resultMap.put(9, LatestTenProjects09.class);
         resultMap.put(10, IncreaseSalaries10.class);
-        resultMap.put(11, ChangeCasing02.class);
-        resultMap.put(12, ChangeCasing02.class);
-        resultMap.put(13, ChangeCasing02.class);
+        resultMap.put(11, EmployeesByFirstName11.class);
+        resultMap.put(12, EmployeesMaximumSalaries12.class);
+        resultMap.put(13, RemoveTowns13.class);
 
         return resultMap;
     }
