@@ -2,13 +2,18 @@ package tasks;
 
 import entities.Project;
 import utils.EntityManagerCreator;
+import utils.LoggerManager;
+import utils.interfaces.Logger;
 
 import javax.persistence.EntityManager;
 import java.util.Comparator;
 import java.util.List;
 
 public class LatestTenProjects09 {
-    public static String solve() {
+
+    public static void solve() {
+
+        Logger logger = LoggerManager.getLogger();
 
         EntityManager entityManager = EntityManagerCreator.getEntityManager();
 
@@ -34,6 +39,6 @@ public class LatestTenProjects09 {
 
         entityManager.getTransaction().commit();
 
-        return sb.toString().trim();
+        logger.log(sb.toString().trim());
     }
 }

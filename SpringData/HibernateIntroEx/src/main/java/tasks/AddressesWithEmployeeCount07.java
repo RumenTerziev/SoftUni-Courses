@@ -2,12 +2,17 @@ package tasks;
 
 import entities.Address;
 import utils.EntityManagerCreator;
+import utils.LoggerManager;
+import utils.interfaces.Logger;
 
 import javax.persistence.EntityManager;
 
 public class AddressesWithEmployeeCount07 {
 
-    public static String solve() {
+    public static void solve() {
+
+        Logger logger = LoggerManager.getLogger();
+
         EntityManager entityManager = EntityManagerCreator.getEntityManager();
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -20,6 +25,6 @@ public class AddressesWithEmployeeCount07 {
                         a.getTown().getName(),
                         a.getEmployees().size())));
 
-         return stringBuilder.toString().trim();
+         logger.log(stringBuilder.toString().trim());
     }
 }

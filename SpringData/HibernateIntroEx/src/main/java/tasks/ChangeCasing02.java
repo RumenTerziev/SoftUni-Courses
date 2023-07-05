@@ -2,6 +2,8 @@ package tasks;
 
 import entities.Town;
 import utils.EntityManagerCreator;
+import utils.LoggerManager;
+import utils.interfaces.Logger;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -9,7 +11,9 @@ import java.util.stream.Collectors;
 
 public class ChangeCasing02 {
 
-    public static String solve() {
+    public static void solve() {
+
+        Logger logger = LoggerManager.getLogger();
 
         EntityManager entityManager = EntityManagerCreator.getEntityManager();
 
@@ -29,6 +33,6 @@ public class ChangeCasing02 {
 
         entityManager.getTransaction().commit();
 
-        return stringBuilder.toString().trim();
+         logger.log(stringBuilder.toString().trim());
     }
 }

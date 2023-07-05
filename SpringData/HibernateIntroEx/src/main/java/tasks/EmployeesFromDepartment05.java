@@ -2,13 +2,17 @@ package tasks;
 
 import entities.Employee;
 import utils.EntityManagerCreator;
+import utils.LoggerManager;
+import utils.interfaces.Logger;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
 public class EmployeesFromDepartment05 {
 
-    public static String solve() {
+    public static void solve() {
+
+        Logger logger = LoggerManager.getLogger();
 
         String searchedDepartment = "Research and Development";
 
@@ -30,6 +34,6 @@ public class EmployeesFromDepartment05 {
                 e.getSalary())));
 
         entityManager.getTransaction().commit();
-        return sb.toString().trim();
+        logger.log(sb.toString().trim());
     }
 }

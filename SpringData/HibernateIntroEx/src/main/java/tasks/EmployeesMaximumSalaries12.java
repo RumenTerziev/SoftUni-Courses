@@ -2,6 +2,8 @@ package tasks;
 
 import entities.Department;
 import utils.EntityManagerCreator;
+import utils.LoggerManager;
+import utils.interfaces.Logger;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -10,7 +12,9 @@ import java.util.*;
 
 public class EmployeesMaximumSalaries12 {
 
-    public static String solve() {
+    public static void solve() {
+
+        Logger logger = LoggerManager.getLogger();
 
         EntityManager entityManager = EntityManagerCreator.getEntityManager();
 
@@ -41,6 +45,6 @@ public class EmployeesMaximumSalaries12 {
                         df.format(e.getValue()))));
 
         entityManager.getTransaction().commit();
-        return sb.toString().trim();
+        logger.log(sb.toString().trim());
     }
 }

@@ -2,21 +2,30 @@ package tasks;
 
 import entities.Employee;
 import utils.EntityManagerCreator;
+import utils.LoggerManager;
+import utils.ReaderManager;
+import utils.interfaces.Logger;
+import utils.interfaces.Reader;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import java.util.Scanner;
 
 public class ContainsEmployee03 {
-    public static String solve() {
-        Scanner scanner = new Scanner(System.in);
+
+    private static final String MASSAGE = "Please enter full name to search by!";
+
+    public static void solve() {
+
+        Reader reader = ReaderManager.getReader();
+        Logger logger = LoggerManager.getLogger();
+
+        logger.log(MASSAGE);
+        String fullName = reader.readLine();
 
         EntityManager entityManager = EntityManagerCreator.getEntityManager();
 
         entityManager.getTransaction().begin();
 
-        System.out.println("Please enter full name to search by!");
-        String fullName = scanner.nextLine();
 
         String result;
         try {
@@ -35,6 +44,6 @@ public class ContainsEmployee03 {
 
         entityManager.getTransaction().commit();
 
-        return result;
+        logger.log(result);
     }
 }

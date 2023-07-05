@@ -3,36 +3,42 @@ package tasks;
 import entities.Address;
 import entities.Town;
 import utils.EntityManagerCreator;
+import utils.LoggerManager;
+import utils.ReaderManager;
+import utils.interfaces.Logger;
+import utils.interfaces.Reader;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.util.List;
-import java.util.Scanner;
 
 public class RemoveTowns13 {
 
-    public static String solve() {
 
+    private static final String MASSAGE = "Please enter town name to remove from DB!";
+
+    public static void solve() {
+
+        Reader reader = ReaderManager.getReader();
+        Logger logger = LoggerManager.getLogger();
+
+        logger.log(MASSAGE);
+        String townToRemove = reader.readLine();
 
         EntityManager entityManager = EntityManagerCreator.getEntityManager();
         entityManager.getTransaction().begin();
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Please enter town name to remove from DB!");
-        String searchedTown = scanner.nextLine();
 
         Town town;
 
         try {
             town = entityManager.createQuery("SELECT t FROM Town t WHERE t.name = :searchedTown", Town.class)
-                    .setParameter("searchedTown", searchedTown)
+                    .setParameter("searchedTown", townToRemove)
                     .getSingleResult();
 
         } catch (NoResultException exception) {
-            return "No town with given name was found!";
+            logger.log("No town with given name was found!");
+            return;
         }
-
 
         List<Address> addresses = entityManager.createQuery(
                         "SELECT a FROM Address a WHERE a.town.id = :searchedId", Address.class)
@@ -47,7 +53,7 @@ public class RemoveTowns13 {
 
         entityManager.getTransaction().commit();
 
-        return String.format("%d address in %s deleted", addresses.size(), searchedTown);
+        logger.log(String.format("%d address in %s deleted", addresses.size(), townToRemove));
     }
 
 }

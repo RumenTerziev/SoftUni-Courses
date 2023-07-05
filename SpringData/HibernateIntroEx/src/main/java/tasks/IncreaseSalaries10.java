@@ -2,6 +2,8 @@ package tasks;
 
 import entities.Employee;
 import utils.EntityManagerCreator;
+import utils.LoggerManager;
+import utils.interfaces.Logger;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -9,7 +11,11 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 public class IncreaseSalaries10 {
-    public static String solve() {
+
+    public static void solve() {
+
+        Logger logger = LoggerManager.getLogger();
+
         EntityManager entityManager = EntityManagerCreator.getEntityManager();
 
         entityManager.getTransaction().begin();
@@ -34,6 +40,6 @@ public class IncreaseSalaries10 {
                 e.getFirstName(),
                 e.getLastName(),
                 df.format(e.getSalary()))));
-        return sb.toString().trim();
+        logger.log(sb.toString().trim());
     }
 }

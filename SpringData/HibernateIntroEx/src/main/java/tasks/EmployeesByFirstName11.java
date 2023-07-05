@@ -2,26 +2,31 @@ package tasks;
 
 import entities.Employee;
 import utils.EntityManagerCreator;
+import utils.LoggerManager;
+import utils.ReaderManager;
+import utils.interfaces.Logger;
+import utils.interfaces.Reader;
 
 import javax.persistence.EntityManager;
 import java.text.DecimalFormat;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Scanner;
 
 public class EmployeesByFirstName11 {
 
-    public static String solve() {
+    private static final String MASSAGE = "Please enter a pattern to search by for employee's first name!";
+
+    public static void solve() {
+
+        Reader reader = ReaderManager.getReader();
+        Logger logger = LoggerManager.getLogger();
+
+        logger.log(MASSAGE);
+        String pattern = reader.readLine();
 
         EntityManager entityManager = EntityManagerCreator.getEntityManager();
 
         entityManager.getTransaction().begin();
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Please enter a pattern to search by for employee's first name!");
-        String pattern = scanner.nextLine();
-
 
         List<Employee> employees = entityManager.createQuery(
                         "SELECT e FROM Employee e WHERE e.firstName LIKE CONCAT(:pattern, '%')", Employee.class)
@@ -46,6 +51,6 @@ public class EmployeesByFirstName11 {
 
         entityManager.getTransaction().commit();
 
-        return result.toString().trim();
+        logger.log(result.toString().trim());
     }
 }

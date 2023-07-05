@@ -3,22 +3,30 @@ package tasks;
 import entities.Address;
 import entities.Employee;
 import utils.EntityManagerCreator;
+import utils.LoggerManager;
+import utils.ReaderManager;
+import utils.interfaces.Logger;
+import utils.interfaces.Reader;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import java.util.Scanner;
 
 public class UpdateEmployeeAddress06 {
-    public static String solve() {
 
-        Scanner scanner = new Scanner(System.in);
+    private static final String MASSAGE = "Please enter last name to update an employee address!";
+
+    public static void solve() {
+
+        Reader reader = ReaderManager.getReader();
+        Logger logger = LoggerManager.getLogger();
+
+        logger.log(MASSAGE);
+        String searchedLastName = reader.readLine();
 
         EntityManager entityManager = EntityManagerCreator.getEntityManager();
 
         entityManager.getTransaction().begin();
 
-        System.out.println("Please enter last name to update an employee address!");
-        String searchedLastName = scanner.nextLine();
         String newAddressText = "Vitoshka 15";
 
         Address address = new Address();
@@ -45,6 +53,6 @@ public class UpdateEmployeeAddress06 {
 
         entityManager.getTransaction().commit();
 
-        return result;
+        logger.log(result);
     }
 }

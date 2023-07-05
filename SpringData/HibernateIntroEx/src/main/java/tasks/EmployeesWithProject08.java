@@ -3,23 +3,32 @@ package tasks;
 import entities.Employee;
 import entities.Project;
 import utils.EntityManagerCreator;
+import utils.LoggerManager;
+import utils.ReaderManager;
+import utils.interfaces.Logger;
+import utils.interfaces.Reader;
 
 import javax.persistence.EntityManager;
 import java.util.Comparator;
-import java.util.Scanner;
 
 public class EmployeesWithProject08 {
-    public static String solve() {
+
+    private static final String MASSAGE = "Please enter id to search by!";
+
+    public static void solve() {
+
+        Reader reader = ReaderManager.getReader();
+        Logger logger = LoggerManager.getLogger();
+
+        logger.log(MASSAGE);
+        int searchedId = Integer.parseInt(reader.readLine());
 
         EntityManager entityManager = EntityManagerCreator.getEntityManager();
 
         entityManager.getTransaction().begin();
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter id to search by!");
-        int searchedId = Integer.parseInt(scanner.nextLine());
-
-        Employee employee = entityManager.createQuery("SELECT e FROM Employee e WHERE e.id = :searchedId", Employee.class)
+        Employee employee = entityManager.createQuery(
+                "SELECT e FROM Employee e WHERE e.id = :searchedId", Employee.class)
                 .setParameter("searchedId", searchedId)
                 .getSingleResult();
 
@@ -32,6 +41,6 @@ public class EmployeesWithProject08 {
                 .forEach(p -> sb.append(String.format(p.getName())).append(System.lineSeparator()));
 
         entityManager.getTransaction().commit();
-        return sb.toString().trim();
+        logger.log(sb.toString().trim());
     }
 }

@@ -1,6 +1,8 @@
 package utils;
 
 import tasks.*;
+import utils.interfaces.Logger;
+import utils.interfaces.Reader;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -8,36 +10,33 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TaskManager {
-    private final Reader reader;
-    private final Logger logger;
+    private static final Map<Integer, Class<?>> TASK_MAP = getTaskMap();
 
-    public TaskManager(Reader reader, Logger logger) {
-        this.reader = reader;
-        this.logger = logger;
-    }
+    public static void solve() throws InvocationTargetException, IllegalAccessException {
 
+        Reader reader = ReaderManager.getReader();
+        Logger logger = LoggerManager.getLogger();
 
-    public void solve() throws InvocationTargetException, IllegalAccessException {
-        this.logger.log("Please enter the number of the task you want to check out!" +
+        logger.log("Please enter the number of the task you want to check out!" +
                 "From 2 to 13");
 
-        int numberOfTask = Integer.parseInt(this.reader.readLine());
+        int numberOfTask = Integer.parseInt(reader.readLine());
 
         if (numberOfTask < 2 || numberOfTask > 13) {
-            this.logger.log("No such task with the searched number!");
+            logger.log("No such task with the searched number!");
             return;
         }
 
-        Map<Integer, Class<?>> taskMap = getTaskMap();
-        Method[] declaredMethods = taskMap.get(numberOfTask).getDeclaredMethods();
+        Method[] declaredMethods = TASK_MAP.get(numberOfTask).getDeclaredMethods();
+        Method solve = declaredMethods[0];
 
-        declaredMethods[0].setAccessible(true);
-        String result = declaredMethods[0].invoke(taskMap.get(numberOfTask)).toString();
-        this.logger.log(result);
+        solve.setAccessible(true);
+
+        solve.invoke(TASK_MAP.get(numberOfTask));
 
     }
 
-    private Map<Integer, Class<?>> getTaskMap() {
+    private static Map<Integer, Class<?>> getTaskMap() {
 
         Map<Integer, Class<?>> resultMap = new HashMap<>();
         resultMap.put(2, ChangeCasing02.class);
@@ -55,5 +54,20 @@ public class TaskManager {
 
         return resultMap;
     }
+
+
+//    private static Map<Integer, String> getPrintMassages() {
+//
+//        Map<Integer, String> printMassages = new HashMap<>();
+//
+//        printMassages.put(3, "Please enter full name to search by!");
+//        printMassages.put(6, "Please enter last name to update an employee address!");
+//        printMassages.put(8, "Please enter id to search by!");
+//        printMassages.put(11, "Please enter a pattern to search by for employee's first name!");
+//        printMassages.put(13, "Please enter town name to remove from DB!");
+//
+//        return printMassages;
+//    }
+
 
 }
