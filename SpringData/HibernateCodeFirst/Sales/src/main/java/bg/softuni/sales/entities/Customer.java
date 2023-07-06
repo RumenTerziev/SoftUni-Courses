@@ -4,24 +4,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
-@Table(name = "products")
-public class Product extends BaseEntity{
+@Table(name = "customers")
+public class Customer extends BaseEntity {
 
     @Column
     private String name;
 
     @Column
-    private Double quantity;
+    private String email;
 
-    @Column
-    private BigDecimal price;
+    @Column(name = "credit_card_number")
+    private String creditCardNumber;
 
-
-    @OneToMany(mappedBy = "product", targetEntity = Sale.class)
+    @OneToMany(mappedBy = "customer", targetEntity = Sale.class)
     private Set<Sale> sales;
-
 }

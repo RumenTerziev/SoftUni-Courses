@@ -3,10 +3,10 @@ package tasks;
 import entities.Address;
 import entities.Employee;
 import utils.EntityManagerCreator;
-import utils.LoggerManager;
-import utils.ReaderManager;
-import utils.interfaces.Logger;
-import utils.interfaces.Reader;
+import utils.io.log.LoggerManager;
+import utils.io.read.ReaderManager;
+import utils.io.log.Logger;
+import utils.io.read.Reader;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

@@ -1,6 +1,4 @@
-package utils;
-
-import utils.interfaces.Logger;
+package utils.io.log;
 
 public class LoggerManager {
 

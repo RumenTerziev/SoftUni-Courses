@@ -1,4 +1,4 @@
-package utils.interfaces;
+package utils.io.read;
 
 public interface Reader {
 

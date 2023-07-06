@@ -1,6 +1,4 @@
-package utils;
-
-import utils.interfaces.Reader;
+package utils.io.read;
 
 public class ReaderManager {
 

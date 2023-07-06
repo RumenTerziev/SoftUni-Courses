@@ -1,6 +1,6 @@
-package utils;
+package utils.io.log;
 
-import utils.interfaces.Logger;
+import utils.io.log.Logger;
 
 public class SysOutLogger implements Logger {
 

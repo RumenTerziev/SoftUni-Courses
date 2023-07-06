@@ -2,8 +2,8 @@ package tasks;
 
 import entities.Employee;
 import utils.EntityManagerCreator;
-import utils.LoggerManager;
-import utils.interfaces.Logger;
+import utils.io.log.LoggerManager;
+import utils.io.log.Logger;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
