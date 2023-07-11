@@ -1,10 +1,15 @@
 package bg.softuni.sales.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "sales")
+@Getter
+@Setter
 public class Sale extends BaseEntity {
 
     @ManyToOne(targetEntity = Product.class)
