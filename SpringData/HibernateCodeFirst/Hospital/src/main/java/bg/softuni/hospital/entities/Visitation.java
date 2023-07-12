@@ -22,7 +22,7 @@ public class Visitation extends BaseEntity {
     private String comments;
 
 
-    @ManyToOne(targetEntity = Patient.class)
+    @ManyToOne(targetEntity = Patient.class, optional = false)
     private Patient patient;
 
 

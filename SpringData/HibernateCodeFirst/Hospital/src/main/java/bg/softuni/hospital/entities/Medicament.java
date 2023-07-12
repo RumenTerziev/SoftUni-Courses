@@ -13,7 +13,7 @@ import java.util.Set;
 @Setter
 public class Medicament extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @ManyToMany(targetEntity = Patient.class, mappedBy = "medicaments")

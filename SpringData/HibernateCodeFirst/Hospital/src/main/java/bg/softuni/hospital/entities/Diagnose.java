@@ -16,7 +16,7 @@ import java.util.Set;
 @Setter
 public class Diagnose extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @Column(columnDefinition = "TEXT")

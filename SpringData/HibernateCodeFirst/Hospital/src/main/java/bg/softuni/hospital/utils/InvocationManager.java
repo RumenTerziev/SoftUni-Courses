@@ -8,7 +8,7 @@ import bg.softuni.hospital.entities.Visitation;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InvokationManager {
+public class InvocationManager {
 
     public static Map<String, Class<?>> getEntityMap() {
 
