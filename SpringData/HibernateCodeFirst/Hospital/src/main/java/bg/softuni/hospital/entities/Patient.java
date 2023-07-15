@@ -46,7 +46,6 @@ public class Patient extends BaseEntity {
     @JoinTable(name = "patients_medicaments",
             joinColumns = @JoinColumn(name = "patient_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "medicament_id", referencedColumnName = "id"))
-
     private Set<Medicament> medicaments;
 
     @ManyToMany(targetEntity = Diagnose.class)

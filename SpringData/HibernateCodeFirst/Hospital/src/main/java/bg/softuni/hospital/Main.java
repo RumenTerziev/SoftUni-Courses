@@ -20,33 +20,36 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Diagnose diagnose = new Diagnose();
-        diagnose.setName("Weak diagnose");
-
-
-        Medicament medicament = new Medicament();
-        medicament.setName("Vitamin C");
-
-
-        Visitation visitation = new Visitation();
-        visitation.setDate(LocalDate.of(2022, 11, 11));
-
-
         Patient patient = new Patient();
         patient.setFirstName("Gosho");
         patient.setHasInsurance(true);
         patient.setDateOfBirth(LocalDate.of(1995, 12, 12));
 
+        Visitation visitation = new Visitation();
+        visitation.setDate(LocalDate.of(2022, 11, 11));
+        visitation.setPatient(patient);
+
+
+        Diagnose diagnose = new Diagnose();
+        diagnose.setName("Weak diagnose");
+        diagnose.setPatients(Set.of(patient));
+
+        Medicament medicament = new Medicament();
+        medicament.setName("Vitamin C");
+        medicament.setPatients(Set.of(patient));
+
+
+
+        PATIENT_REPOSITORY.save(patient);
+        MEDICAMENT_REPOSITORY.save(medicament);
+        DIAGNOSE_REPOSITORY.save(diagnose);
+        VISITATION_REPOSITORY.save(visitation);
+
         patient.setVisitations(Set.of(visitation));
         patient.setDiagnoses(Set.of(diagnose));
         patient.setMedicaments(Set.of(medicament));
 
-
-        MEDICAMENT_REPOSITORY.save(medicament);
-        DIAGNOSE_REPOSITORY.save(diagnose);
-        VISITATION_REPOSITORY.save(visitation);
         PATIENT_REPOSITORY.save(patient);
-
 
         MEDICAMENT_REPOSITORY.closeConnection();
         DIAGNOSE_REPOSITORY.closeConnection();
