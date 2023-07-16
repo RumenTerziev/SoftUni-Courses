@@ -19,7 +19,7 @@ public class Student extends Person {
     @Column
     private Double attendance;
 
-    @ManyToMany()
+    @ManyToMany
     @JoinTable(name = "students_courses",
             joinColumns = @JoinColumn(name = "course_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
