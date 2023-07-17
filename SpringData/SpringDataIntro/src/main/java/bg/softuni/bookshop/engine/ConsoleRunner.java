@@ -9,7 +9,6 @@ import bg.softuni.bookshop.utils.io.log.Logger;
 import bg.softuni.bookshop.utils.io.log.LoggerManager;
 import bg.softuni.bookshop.utils.io.read.Reader;
 import bg.softuni.bookshop.utils.io.read.ReaderManager;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -17,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 
 @Component
@@ -25,15 +25,18 @@ public class ConsoleRunner implements CommandLineRunner {
     private static final Reader READER = ReaderManager.getSysInReader();
     private static final Logger LOGGER = LoggerManager.getSysOutLogger();
 
-    @Autowired
-    private BookService bookService;
+    private final BookService bookService;
+
+    private final CategoryService categoryService;
+
+    private final AuthorService authorService;
 
     @Autowired
-    private CategoryService categoryService;
-
-
-    @Autowired
-    private AuthorService authorService;
+    public ConsoleRunner(BookService bookService, CategoryService categoryService, AuthorService authorService) {
+        this.bookService = bookService;
+        this.categoryService = categoryService;
+        this.authorService = authorService;
+    }
 
 
     @Override
@@ -80,7 +83,7 @@ public class ConsoleRunner implements CommandLineRunner {
 
         LocalDate localDate = LocalDate.of(1990, 1, 1);
 
-        List<Author> authors = this.authorService.getAllAuthorsWithBooksBeforeYear(localDate);
+        Set<Author> authors = this.authorService.getAllAuthorsWithBooksBeforeYear(localDate);
 
         if (authors.size() > 0) {
             authors.forEach(a -> LOGGER.log(a.getFirstName() + " " + a.getLastName()));

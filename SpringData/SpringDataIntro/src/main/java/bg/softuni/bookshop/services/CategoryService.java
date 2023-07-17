@@ -16,8 +16,12 @@ import static bg.softuni.bookshop.domain.constants.FilePaths.CATEGORIES_FILE_PAT
 @Service
 public class CategoryService {
 
+    private final CategoryRepository categoryRepository;
+
     @Autowired
-    private CategoryRepository categoryRepository;
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
 
     public void seedAllCategories() throws IOException {
 

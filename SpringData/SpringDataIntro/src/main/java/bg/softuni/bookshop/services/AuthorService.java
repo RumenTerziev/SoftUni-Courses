@@ -11,23 +11,27 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 import static bg.softuni.bookshop.domain.constants.FilePaths.AUTHORS_FILE_PATH;
 
 @Service
 public class AuthorService {
 
-    @Autowired
-    private AuthorRepository authorRepository;
+    private final AuthorRepository authorRepository;
+
+    private final BookRepository bookRepository;
+
 
     @Autowired
-    private BookRepository bookRepository;
-
+    public AuthorService(AuthorRepository authorRepository, BookRepository bookRepository) {
+        this.authorRepository = authorRepository;
+        this.bookRepository = bookRepository;
+    }
 
     public Author getAuthorByName(String fullName) {
         String[] name = fullName.split("\\s+");
@@ -47,12 +51,12 @@ public class AuthorService {
         return this.authorRepository.findAllOrderByBooks();
     }
 
-    public List<Author> getAllAuthorsWithBooksBeforeYear(LocalDate localDate) {
+    public Set<Author> getAllAuthorsWithBooksBeforeYear(LocalDate localDate) {
 
-        List<Book> allByReleaseDateBefore = this.bookRepository.findAllByReleaseDateBefore(localDate);
-        Set<Book> books = new HashSet<>(allByReleaseDateBefore);
-
-        return this.authorRepository.findAllByBooks(books);
+        return this.bookRepository.findAllByReleaseDateBefore(localDate)
+                .stream()
+                .map(Book::getAuthor)
+                .collect(Collectors.toSet());
 
     }
 

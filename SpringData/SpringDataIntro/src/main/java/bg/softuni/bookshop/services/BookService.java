@@ -25,15 +25,18 @@ import static bg.softuni.bookshop.domain.constants.FilePaths.BOOKS_FILE_PATH;
 @Service
 public class BookService {
 
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
+
+    private final AuthorService authorService;
+
+    private final CategoryService categoryService;
 
     @Autowired
-    private AuthorService authorService;
-
-    @Autowired
-    private CategoryService categoryService;
-
+    public BookService(BookRepository bookRepository, AuthorService authorService, CategoryService categoryService) {
+        this.bookRepository = bookRepository;
+        this.authorService = authorService;
+        this.categoryService = categoryService;
+    }
 
 
     public List<Book> getAllBooksByAuthor(String searchedAuthor) {
@@ -49,7 +52,6 @@ public class BookService {
         return this.bookRepository.findAllByReleaseDateAfter(localDate);
 
     }
-
 
 
     public void seedAllBooks() throws IOException {
