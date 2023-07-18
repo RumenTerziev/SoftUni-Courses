@@ -20,10 +20,10 @@ import java.util.Set;
 @AllArgsConstructor
 public class Book extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String title;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", length = 1000)
     private String description;
 
     @Column(name = "edition_type")
