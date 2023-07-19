@@ -2,9 +2,10 @@ package bg.softuni.bookshop.engine;
 
 import bg.softuni.bookshop.domain.entities.Author;
 import bg.softuni.bookshop.domain.entities.Book;
-import bg.softuni.bookshop.services.AuthorService;
-import bg.softuni.bookshop.services.BookService;
-import bg.softuni.bookshop.services.CategoryService;
+import bg.softuni.bookshop.services.*;
+import bg.softuni.bookshop.services.impl.AuthorServiceImpl;
+import bg.softuni.bookshop.services.impl.BookServiceImpl;
+import bg.softuni.bookshop.services.impl.CategoryServiceImpl;
 import bg.softuni.bookshop.utils.io.log.Logger;
 import bg.softuni.bookshop.utils.io.log.LoggerManager;
 import bg.softuni.bookshop.utils.io.read.Reader;
@@ -32,7 +33,7 @@ public class ConsoleRunner implements CommandLineRunner {
     private final AuthorService authorService;
 
     @Autowired
-    public ConsoleRunner(BookService bookService, CategoryService categoryService, AuthorService authorService) {
+    public ConsoleRunner(BookServiceImpl bookService, CategoryServiceImpl categoryService, AuthorServiceImpl authorService) {
         this.bookService = bookService;
         this.categoryService = categoryService;
         this.authorService = authorService;
