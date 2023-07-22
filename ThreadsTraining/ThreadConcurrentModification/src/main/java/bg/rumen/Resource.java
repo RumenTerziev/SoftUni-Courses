@@ -1,6 +1,7 @@
 package bg.rumen;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Resource {
@@ -26,7 +27,7 @@ public class Resource {
 
 
     public List<String> getStrings() {
-        return this.strings;
+        return Collections.unmodifiableList(this.strings);
     }
 
     public void addResources(String string) {

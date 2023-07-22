@@ -6,13 +6,9 @@ import bg.rumen.threads.ThreadTwo;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        try {
-            start();
-        } catch (InterruptedException ex) {
-            System.out.println(ex.getMessage());
-        }
+        start();
 
         Resource resource = Resource.getInstance();
         resource.getStrings().forEach(System.out::println);
