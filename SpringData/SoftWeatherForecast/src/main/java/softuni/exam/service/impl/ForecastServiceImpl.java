@@ -75,7 +75,9 @@ public class ForecastServiceImpl implements ForecastService {
         }
 
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(this.getClass().getResourceAsStream(FORECAST_FILE_PATH))));
+        BufferedReader bufferedReader =
+                new BufferedReader(new InputStreamReader(Objects.requireNonNull
+                        (this.getClass().getResourceAsStream(FORECAST_FILE_PATH))));
 
         ForecastsImportDto forecastsDto = (ForecastsImportDto) this.unmarshaller.unmarshal(bufferedReader);
         bufferedReader.close();
