@@ -107,4 +107,9 @@ public class HouseBuilder {
         return new House(this);
     }
 
+    @Override
+    public String toString() {
+        return "I am a builder!";
+    }
+
 }

@@ -69,4 +69,10 @@ public class House {
     public boolean isRedecorated() {
         return isRedecorated;
     }
+
+
+    @Override
+    public String toString() {
+        return "I am a House!";
+    }
 }

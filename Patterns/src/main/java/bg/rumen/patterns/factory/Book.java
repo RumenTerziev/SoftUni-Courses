@@ -1,6 +1,6 @@
 package bg.rumen.patterns.factory;
 
-public class Book {
+public class Book implements BaseBook{
 
     private String title;
 
@@ -53,5 +53,10 @@ public class Book {
                 this.author,
                 this.price,
                 this.pages);
+    }
+
+    @Override
+    public void gettingOld() {
+        this.price -= 10;
     }
 }
