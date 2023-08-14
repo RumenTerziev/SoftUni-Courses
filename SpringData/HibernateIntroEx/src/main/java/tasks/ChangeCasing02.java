@@ -9,9 +9,9 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ChangeCasing02 {
+public class ChangeCasing02{
 
-    public static void solve() {
+    public void solve() {
 
         Logger logger = LoggerManager.getLogger();
 
@@ -33,6 +33,6 @@ public class ChangeCasing02 {
 
         entityManager.getTransaction().commit();
 
-         logger.log(stringBuilder.toString().trim());
+        logger.log(stringBuilder.toString().trim());
     }
 }

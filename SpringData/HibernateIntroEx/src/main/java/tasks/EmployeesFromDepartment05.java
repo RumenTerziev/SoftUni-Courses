@@ -8,9 +8,9 @@ import utils.io.log.Logger;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class EmployeesFromDepartment05 {
+public class EmployeesFromDepartment05 implements Task {
 
-    public static void solve() {
+    public void solve() {
 
         Logger logger = LoggerManager.getLogger();
 

@@ -10,9 +10,9 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class IncreaseSalaries10 {
+public class IncreaseSalaries10 implements Task {
 
-    public static void solve() {
+    public void solve() {
 
         Logger logger = LoggerManager.getLogger();
 

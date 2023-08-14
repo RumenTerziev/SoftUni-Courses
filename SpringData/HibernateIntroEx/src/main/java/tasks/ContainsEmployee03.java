@@ -10,11 +10,11 @@ import utils.io.read.Reader;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
-public class ContainsEmployee03 {
+public class ContainsEmployee03 implements Task {
 
     private static final String MASSAGE = "Please enter full name to search by!";
 
-    public static void solve() {
+    public void solve() {
 
         Reader reader = ReaderManager.getReader();
         Logger logger = LoggerManager.getLogger();

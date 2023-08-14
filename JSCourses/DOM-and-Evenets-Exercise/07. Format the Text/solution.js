@@ -8,5 +8,13 @@ function solve() {
     let paragraph = document.createElement('p');
     paragraph.textContent = currentThree.join('.') + '.';
     output.appendChild(paragraph);
+  
   }
+  findSth();
+}
+
+function findSth() {
+  let myVariable = 5;
+
+  console.log(`Found ${myVariable}`);
 }

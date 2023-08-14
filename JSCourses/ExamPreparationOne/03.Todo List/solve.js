@@ -10,6 +10,13 @@ function attachEvents() {
         unorderedList: document.getElementById('todo-list')
     }
 
+    let mayVar = 'pesho';
+    mayVar = 5;
+    mayVar = 'gosho';
+    mayVar = {};
+    mayVar.key = 5;
+    mayVar.name = 'asd';
+
 
     allDomElements.addButton.addEventListener('click', addButtonHandler);
     allDomElements.loadButton.addEventListener('click', loadButtonHandler);

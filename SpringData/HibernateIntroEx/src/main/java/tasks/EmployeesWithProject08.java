@@ -11,11 +11,11 @@ import utils.io.read.Reader;
 import javax.persistence.EntityManager;
 import java.util.Comparator;
 
-public class EmployeesWithProject08 {
+public class EmployeesWithProject08 implements Task {
 
     private static final String MASSAGE = "Please enter id to search by!";
 
-    public static void solve() {
+    public void solve() {
 
         Reader reader = ReaderManager.getReader();
         Logger logger = LoggerManager.getLogger();

@@ -12,12 +12,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.util.List;
 
-public class RemoveTowns13 {
+public class RemoveTowns13 implements Task {
 
 
     private static final String MASSAGE = "Please enter town name to remove from DB!";
 
-    public static void solve() {
+    public void solve() {
 
         Reader reader = ReaderManager.getReader();
         Logger logger = LoggerManager.getLogger();

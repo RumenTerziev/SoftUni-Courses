@@ -8,8 +8,8 @@ import utils.io.log.Logger;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class EmployeesSalaries04 {
-    public static void solve() {
+public class EmployeesSalaries04 implements Task {
+    public void solve() {
 
         Logger logger = LoggerManager.getLogger();
 

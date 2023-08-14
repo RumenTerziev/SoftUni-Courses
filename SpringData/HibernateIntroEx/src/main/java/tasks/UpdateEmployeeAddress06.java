@@ -11,11 +11,11 @@ import utils.io.read.Reader;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
-public class UpdateEmployeeAddress06 {
+public class UpdateEmployeeAddress06 implements Task {
 
     private static final String MASSAGE = "Please enter last name to update an employee address!";
 
-    public static void solve() {
+    public void solve() {
 
         Reader reader = ReaderManager.getReader();
         Logger logger = LoggerManager.getLogger();

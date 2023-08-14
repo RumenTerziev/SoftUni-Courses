@@ -9,9 +9,9 @@ import javax.persistence.EntityManager;
 import java.util.Comparator;
 import java.util.List;
 
-public class LatestTenProjects09 {
+public class LatestTenProjects09 implements Task {
 
-    public static void solve() {
+    public void solve() {
 
         Logger logger = LoggerManager.getLogger();
 

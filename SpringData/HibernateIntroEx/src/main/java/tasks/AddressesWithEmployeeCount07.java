@@ -7,9 +7,9 @@ import utils.io.log.Logger;
 
 import javax.persistence.EntityManager;
 
-public class AddressesWithEmployeeCount07 {
+public class AddressesWithEmployeeCount07 implements Task {
 
-    public static void solve() {
+    public void solve() {
 
         Logger logger = LoggerManager.getLogger();
 

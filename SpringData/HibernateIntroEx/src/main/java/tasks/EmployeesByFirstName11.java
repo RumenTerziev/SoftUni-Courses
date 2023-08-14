@@ -12,11 +12,11 @@ import java.text.DecimalFormat;
 import java.util.Comparator;
 import java.util.List;
 
-public class EmployeesByFirstName11 {
+public class EmployeesByFirstName11 implements Task {
 
     private static final String MASSAGE = "Please enter a pattern to search by for employee's first name!";
 
-    public static void solve() {
+    public void solve() {
 
         Reader reader = ReaderManager.getReader();
         Logger logger = LoggerManager.getLogger();
